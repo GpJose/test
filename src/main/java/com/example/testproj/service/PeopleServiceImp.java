@@ -17,12 +17,8 @@ import java.util.List;
 @Data
 public class PeopleServiceImp implements PeopleService {
 
-    private PeopleRepository peopleRepositories;
-
     @Autowired
-    public PeopleServiceImp(PeopleRepository peopleRepositories) {
-        this.peopleRepositories = peopleRepositories;
-    }
+    private PeopleRepository peopleRepositories;
 
 
     @Override
@@ -45,7 +41,7 @@ public class PeopleServiceImp implements PeopleService {
         } else return ("Is empty");
     }
     @Override
-    public Iterable<People> getAll() {
+    public List<People> getAll() {
         return peopleRepositories.findAll();
     }
 

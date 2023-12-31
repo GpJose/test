@@ -1,31 +1,29 @@
 package com.example.testproj.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(schema = "People", name = "People")
 @Builder
 public class People {
     @Id
-    @JsonProperty("id")
+    @Column(name = "ID")
     private Long id;
     //Имя
-    @JsonProperty("first_name")
+    @Column(name = "Fisrt_name")
     private String first_name;
     //Отчество
-    @JsonProperty("second_name")
+    @Column(name = "Second_Name")
     private String second_name;
     //Фамилия
-    @JsonProperty("last_name")
+    @Column(name = "Last_name")
     private String last_name;
-    @JsonProperty("full_name")
+    @Column(name = "Full_name")
     private String full_name;
 
 }
