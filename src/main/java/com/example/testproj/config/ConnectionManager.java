@@ -19,8 +19,6 @@ public class ConnectionManager {
         dataSource.setServerTimezone( serverTimeZone );
         dataSource.setPortNumber( portNumber );
         dataSource.setAllowPublicKeyRetrieval(true);
-        dataSource.setUser("root");
-        dataSource.setPassword("rootROOT1");
 
         return dataSource.getConnection();
     }
