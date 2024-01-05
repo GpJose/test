@@ -10,23 +10,23 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(schema = "people", name = "People")
+@Table(schema = "people", name = "people")
 @Builder
 public class People {
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //Имя
-    @Column(name = "Fisrt_name")
+    @Column(name = "first_name")
     private String firstName;
     //Отчество
-    @Column(name = "Second_Name")
+    @Column(name = "second_name")
     private String secondName;
     //Фамилия
-    @Column(name = "Last_name")
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name = "Full_name")
+    @Column(name = "full_name")
     private String fullName;
 
 }

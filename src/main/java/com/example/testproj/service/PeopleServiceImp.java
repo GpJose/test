@@ -2,6 +2,8 @@ package com.example.testproj.service;
 
 import com.example.testproj.model.People;
 import com.example.testproj.repository.PeopleRepository;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,11 @@ import java.util.List;
 
 @Service
 @Log4j2
+@NoArgsConstructor
+@Data
 public class PeopleServiceImp implements PeopleService {
 
-    private final PeopleRepository peopleRepositories;
+    private PeopleRepository peopleRepositories;
 
     @Autowired
     public PeopleServiceImp(PeopleRepository peopleRepositories) {
@@ -37,9 +41,15 @@ public class PeopleServiceImp implements PeopleService {
 
     @Override
     public People findByID(Long id) {
-        return peopleRepositories.findById(id).orElse(peopleRepositories.save((
-                new People(1L,"First","Second","Last","Full")
-        )));
+        if (peopleRepositories.findById(id).isPresent()) {
+            return peopleRepositories.findById(id).get();
+        }
+        return People.builder()
+                .firstName("I")
+                .secondName("was")
+                .lastName("born")
+                .fullName("I was born")
+                .build();
     }
     @Override
     public List<People> getAll() {
