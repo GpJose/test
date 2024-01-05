@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/people/api")
 public class PeopleController {
-
     private final PeopleService peopleService;
 
     @Autowired
