@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.util.ObjectUtils.isEmpty;
 
 
 @Service
@@ -22,40 +25,29 @@ public class PeopleServiceImp implements PeopleService {
 
 
     @Override
-    public void add(People people) {
-            peopleRepositories.save(people);
-            log.info("Added people: " + people);
+    public People add(People people) {
+           return peopleRepositories.save(people);
     }
 
     @Override
-    public void deleteByID(Long id) {
-        log.info("Deleting: " +findByID(id));
+    public People deleteByID(Long id) {
+        People pplTemp = findByID(id);
+        log.info("Deleting: " +pplTemp);
         peopleRepositories.deleteById(id);
-        log.info("Deleted");
+        log.info("Has been deleted...");
+        return pplTemp;
     }
 
     @Override
-    public String findByID(Long id) {
-        if (isEmpty(id)) {
-            return peopleRepositories.findById(id).toString();
-        } else return ("Is empty");
+    public People findByID(Long id) {
+
+        return peopleRepositories.findById(id).orElse(peopleRepositories.save((
+                new People(1L,"First","Second","Last","Full")
+        )));
     }
     @Override
     public List<People> getAll() {
         return peopleRepositories.findAll();
-    }
-
-    private boolean isEmpty(Long id){
-        return peopleRepositories.findById(id).isEmpty();
-    }
-    @Override
-    public void loadData() {
-        peopleRepositories.saveAll(List.of(
-                new People(1L,"First","Second","Last","Full"),
-                new People(3L,"First","Second","Last","Full"),
-                new People(2L,"First","Second","Last","Full"),
-                new People(4L,"First","Second","Last","Full")
-        ));
     }
 
 }

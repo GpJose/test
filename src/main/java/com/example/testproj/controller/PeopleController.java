@@ -1,9 +1,12 @@
 package com.example.testproj.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.testproj.service.PeopleService;
 import com.example.testproj.model.People;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/people/api")
@@ -17,25 +20,19 @@ public class PeopleController {
     }
 
     @GetMapping
-    @ResponseBody
-    public Iterable<People> getAllPeople(){
-        return peopleService.getAll();
+    public ResponseEntity<List<People>> getAllPeople(){
+        return ResponseEntity.status(201).body(peopleService.getAll());
     }
     @PutMapping
-    @GetMapping
-    public void addPeople (People people){
-        peopleService.add(people);
+    public ResponseEntity<People> addPeople (People people){
+       return ResponseEntity.status(201).body(peopleService.add(people));
     }
     @DeleteMapping
-    public void deletePeople (Long id){
-        peopleService.deleteByID(id);
+    public ResponseEntity<People> deletePeople (Long id){
+        return ResponseEntity.status(201).body(peopleService.deleteByID(id));
     }
     @PostMapping
-    public String findByID(Long id) {
-        return peopleService.findByID(id);
-    }
-    @GetMapping("/load")
-    public void load(){
-        peopleService.loadData();
+    public ResponseEntity<People> findByID(Long id) {
+        return ResponseEntity.status(201).body(peopleService.findByID(id));
     }
 }
