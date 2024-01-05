@@ -1,29 +1,32 @@
 package com.example.testproj.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(schema = "People", name = "People")
+@Table(schema = "public", name = "people")
 @Builder
 public class People {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //Имя
-    @Column(name = "Fisrt_name")
-    private String first_name;
+    @Column(name = "first_name")
+    private String firstName;
     //Отчество
-    @Column(name = "Second_Name")
-    private String second_name;
+    @Column(name = "second_name")
+    private String secondName;
     //Фамилия
-    @Column(name = "Last_name")
-    private String last_name;
-    @Column(name = "Full_name")
-    private String full_name;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(name = "full_name")
+    private String fullName;
 
 }
