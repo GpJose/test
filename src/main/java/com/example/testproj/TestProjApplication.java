@@ -3,9 +3,11 @@ package com.example.testproj;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
+@EnableJpaRepositories
 public class TestProjApplication {
     //TODO Изменить People на User и сделать пароли с логином, добавить 3 сущности чтобы было 4 связи между ними(User, Book, Library, Chapter тип читалка хотя там больше будет, это на связанность)
     //TODO Задача*(тип доп) Добавить какую нибудь логику на особые действия ну там если магазин то посчитать итоговую стоимость корзины например
