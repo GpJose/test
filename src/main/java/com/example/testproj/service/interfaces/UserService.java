@@ -1,4 +1,4 @@
-package com.example.testproj.service;
+package com.example.testproj.service.interfaces;
 
 import com.example.testproj.model.User;
 

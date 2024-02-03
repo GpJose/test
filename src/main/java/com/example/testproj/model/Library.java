@@ -15,16 +15,16 @@ import lombok.NoArgsConstructor;
 public class Library {
     @Id
     @Column(name = "ID",updatable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "User_Id", updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId", updatable = false)
     private User userId;
-    @ManyToOne
-    @JoinColumn(name ="Book_id", updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name ="bookId", updatable = false)
     private Book bookId;
-    @Column(name = "Current_Chapter", columnDefinition = "bigint default 0", nullable = false)
+    @Column(name = "currentChapter", columnDefinition = "bigint default 0", nullable = false)
     private Long currentChaper;
-    @Column(name = "Current_Page", columnDefinition = "bigint default 0",nullable = false)
+    @Column(name = "currentPage", columnDefinition = "bigint default 0",nullable = false)
     private Long currentPage;
 }

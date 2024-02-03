@@ -12,23 +12,27 @@ import lombok.*;
 @AllArgsConstructor
 public class User {
     @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty("id")
     private Long id;
     //Имя
     @ToString.Include
-    @Column(name = "first_name")
+    @Column(name = "firstName")
     @JsonProperty("firstName")
     private String firstName;
     //Отчество
     @ToString.Include
-    @Column(name = "second_name")
+    @Column(name = "secondName")
     @JsonProperty("secondName")
     private String secondName;
     //Фамилия
     @ToString.Include
-    @Column(name = "last_name")
+    @Column(name = "lastName")
     @JsonProperty("lastName")
     private String lastName;
+    @Column(name = "login",unique = true,updatable = false,nullable = false)
+    @JsonProperty("login")
+    private String login;
+    private String password;
 }

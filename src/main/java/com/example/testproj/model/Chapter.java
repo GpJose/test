@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Chapter {
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @OneToOne
-    @JoinColumn(name = "Book_ID", updatable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bookID", updatable = false)
     private Book bookId;
-    @Column(name = "Chapter")
+    @Column(name = "chapter")
     private Long chapter;
-    @Column(name = "Page")
+    @Column(name = "page")
     private Long page;
 }
