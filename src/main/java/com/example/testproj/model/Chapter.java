@@ -17,10 +17,10 @@ public class Chapter {
     @Id
     private Long id;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bookID", updatable = false)
+    @JoinColumn(name = "book_Id", updatable = false)
     private Book bookId;
-    @Column(name = "chapter")
+    @Column(name = "chapter", columnDefinition = "bigint default 0", nullable = false)
     private Long chapter;
-    @Column(name = "page")
+    @Column(name = "page", columnDefinition = "bigint default 0", nullable = false)
     private Long page;
 }

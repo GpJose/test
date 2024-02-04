@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Book", schema = "public")
 public class Book {
     @Id
-    @Column(name = "bookID", unique = true, updatable = false)
+    @Column(name = "book_Id", unique = true, updatable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bookId;
     @Column(name = "author", updatable = false, nullable = false)

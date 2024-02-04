@@ -6,21 +6,30 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @NoArgsConstructor
 @Data
-@Table(name = "Library", schema = "public")
+@Table(name = "Store", schema = "public")
 @Builder
 @AllArgsConstructor
-public class Library {
+public class Store {
     @Id
-    @Column(name = "id",updatable = false)
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name ="book_Id", updatable = false)
+    private Book bookId;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_Id", updatable = false)
     private User userId;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name ="book_Id", updatable = false)
-    private Book bookId;
+    @JoinColumn(name = "library_Id")
+    private Library libraryId;
+    @Column(name = "payed", columnDefinition = "Boolean default false")
+    private boolean payed;
+    @Column(name = "payed_Date")
+    private Date payedDate;
 }
